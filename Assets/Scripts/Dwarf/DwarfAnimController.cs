@@ -10,9 +10,10 @@ public class DwarfAnimController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        FindObjectOfType<RunForward>().OnDeath += RunForward_OnDeath;
     }
 
-    public void Death()
+    private void RunForward_OnDeath(object sender, EventArgs e)
     {
         anim.SetTrigger("Dead");
     }

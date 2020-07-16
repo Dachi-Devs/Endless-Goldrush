@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class OreProperties : MonoBehaviour
+public class OreProperties : MonoBehaviour, IMinableObject
 {
     private OreSO ore;
 
@@ -20,5 +20,9 @@ public class OreProperties : MonoBehaviour
         Setup();
     }
 
-    public float GetOreValue() => ore.value;
+    public void OnMine()
+    {
+        GameManager.instance.AddToScore(ore.value);
+        Destroy(gameObject);
+    }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class RunForward : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class RunForward : MonoBehaviour
 
     private bool run = true;
 
+    public event EventHandler OnDeath;
 
     void Awake()
     {
@@ -30,9 +32,7 @@ public class RunForward : MonoBehaviour
         if (collision.gameObject.layer == 9)
         {
             run = false;
-            Destroy(GetComponent<SwingPickaxe>());
-            GetComponentInChildren<DwarfAnimController>().Death();
-            FindObjectOfType<GameManager>().OnDeath();
+            OnDeath?.Invoke(this, EventArgs.Empty);
         }
     }
 

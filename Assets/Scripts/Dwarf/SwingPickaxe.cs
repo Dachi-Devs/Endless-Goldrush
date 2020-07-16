@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class SwingPickaxe : MonoBehaviour
 {
@@ -6,19 +7,22 @@ public class SwingPickaxe : MonoBehaviour
     private LayerMask floorLayer;
     [SerializeField]
     private LayerMask obstacleLayer;
+    [SerializeField]
+    private float jumpForce;
 
     private Rigidbody2D rb2d;
+    private bool dead;
 
     [SerializeField]
     private GameObject pickaxe;
     
-    [SerializeField]
-    private float jumpForce;
+
 
     void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
         FindObjectOfType<PickAnimController>().OnSwingEnd += AnimController_OnSwingEnd;
+        GetComponent<RunForward>().OnDeath += RunForward_OnDeath;
         if (rb2d == null)
         {
             rb2d = gameObject.AddComponent<Rigidbody2D>();
@@ -27,12 +31,20 @@ public class SwingPickaxe : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)
+        if (!dead)
         {
-            PickAnimController pick = GetComponentInChildren<PickAnimController>();
-            if (!pick.GetAnimState())
-                pick.StartSwing();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)
+            {
+                PickAnimController pick = GetComponentInChildren<PickAnimController>();
+                if (!pick.GetAnimState())
+                    pick.StartSwing();
+            }
         }
+
+    }
+    private void RunForward_OnDeath(object sender, EventArgs e)
+    {
+        dead = true;
     }
 
     private void AnimController_OnSwingEnd(object sender, System.EventArgs e)
@@ -52,12 +64,10 @@ public class SwingPickaxe : MonoBehaviour
         rb2d.velocity = Vector3.up * jumpForce;
     }
 
-    private void Mine(GameObject oreToMine)
+    private void Mine(GameObject objectMined)
     {
-        OreProperties ore = oreToMine.GetComponent<OreProperties>();
-        GameManager.instance.AddToScore(ore.GetOreValue());
-
-        Destroy(ore.gameObject);
+        IMinableObject objectHit = objectMined.GetComponent<IMinableObject>();
+        objectHit.OnMine();
     }
 
     private bool IsGrounded()

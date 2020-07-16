@@ -7,6 +7,9 @@ public class LevelSpawner : MonoBehaviour
     private GameObject oreObject;
 
     [SerializeField]
+    private GameObject barrel;
+
+    [SerializeField]
     private GameObject chunk;
 
     private int chunkCount;
@@ -28,14 +31,14 @@ public class LevelSpawner : MonoBehaviour
         if (chunkCount % 5 == 0)
             spawnFrequencyMod++;
 
-        float spawnX = 48f * chunkCount;
+        float spawnX = 48f * chunkCount + 5f;
         GameObject chunkSpawned = Instantiate(chunk, new Vector2(spawnX, 0f), Quaternion.identity);
         chunkSpawned.name = "Chunk " + chunkCount;
         PopulateChunk(chunkSpawned);
 
         chunkList.Add(chunkSpawned);
 
-        if (chunkList.Count > 2)
+        if (chunkList.Count > 3)
         {
             Destroy(chunkList[0]);
             chunkList.Remove(chunkList[0]);
@@ -51,7 +54,7 @@ public class LevelSpawner : MonoBehaviour
             float xRot;
             if (roof == 1)
             {
-                yValue = 5.75f;
+                yValue = 7.75f;
                 xRot = 180f;
             }
             else
@@ -60,11 +63,11 @@ public class LevelSpawner : MonoBehaviour
                 xRot = 0f;
             }
 
-            float spawnRange = 30 - spawnFrequencyMod;
+            float spawnRange = 30 + spawnFrequencyMod;
             Mathf.Clamp(spawnRange, 15, 999);
 
-            float doSpawn = Random.Range(0, spawnRange);
-            if (doSpawn <= 10)
+            float doSpawn = Random.Range(0, 100);
+            if (doSpawn <= spawnRange)
             {
                 Vector2 spawnPoint = new Vector2(i * 6f + 1.5f, yValue);
                 GameObject oreSpawn = Instantiate(oreObject, chunk.transform.position + (Vector3)spawnPoint, Quaternion.Euler(new Vector2(xRot, 0f)));

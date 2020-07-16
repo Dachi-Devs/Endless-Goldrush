@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
             instance = this;
     }
 
+    private void Start()
+    {
+        FindObjectOfType<RunForward>().OnDeath += RunForward_OnDeath;
+    }
+
     public void AddToScore(float scoreToAdd)
     {
         score += scoreToAdd;
@@ -28,8 +34,20 @@ public class GameManager : MonoBehaviour
 
     public float GetScore() => score;
 
-    public void OnDeath()
+    private void RunForward_OnDeath(object sender, EventArgs e)
     {
+        StartCoroutine(OnDeath());
+    }
 
+    private IEnumerator OnDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        ActivateDeathMenu();
+    }
+
+    private void ActivateDeathMenu()
+    {
+        Debug.Log("DEATH MENU");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
