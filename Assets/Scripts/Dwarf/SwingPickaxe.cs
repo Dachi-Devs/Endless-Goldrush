@@ -23,28 +23,26 @@ public class SwingPickaxe : MonoBehaviour
         {
             rb2d = gameObject.AddComponent<Rigidbody2D>();
         }
-        //GetAnimControllerWhenMade
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)
         {
-            GetComponentInChildren<PickAnimController>().StartSwing();
+            PickAnimController pick = GetComponentInChildren<PickAnimController>();
+            if (!pick.GetAnimState())
+                pick.StartSwing();
         }
     }
 
     private void AnimController_OnSwingEnd(object sender, System.EventArgs e)
     {
-        if (IsMining())
+        if (IsMining(out GameObject ore))
         {
-            Debug.Log("MINE");
-            Mine();
+            Mine(ore);
         }
         else if (IsGrounded())
         {
-            Debug.Log("JUMP");
             Jump();
         }
     }
@@ -54,29 +52,29 @@ public class SwingPickaxe : MonoBehaviour
         rb2d.velocity = Vector3.up * jumpForce;
     }
 
-    private void Mine()
+    private void Mine(GameObject oreToMine)
     {
-        BoxCollider2D box = GetComponent<BoxCollider2D>();
-        RaycastHit2D ray = Physics2D.BoxCast(box.bounds.center, box.bounds.size * 5f, 0f, Vector2.right, 1f, obstacleLayer);
-        
-        OreProperties ore = ray.collider.GetComponent<OreProperties>();
+        OreProperties ore = oreToMine.GetComponent<OreProperties>();
         GameManager.instance.AddToScore(ore.GetOreValue());
-
 
         Destroy(ore.gameObject);
     }
 
     private bool IsGrounded()
     {
-        BoxCollider2D box = GetComponent<BoxCollider2D>();
-        RaycastHit2D ray = Physics2D.BoxCast(box.bounds.center, box.bounds.size, 0f, Vector2.down, 1f, floorLayer);
+        CircleCollider2D box = GetComponent<CircleCollider2D>();
+        RaycastHit2D ray = Physics2D.Raycast(box.bounds.center, Vector2.down, 1.2f, floorLayer);
         return ray.collider != null;
     }
 
-    private bool IsMining()
+    private bool IsMining(out GameObject ore)
     {
-        BoxCollider2D box = GetComponent<BoxCollider2D>();
-        RaycastHit2D ray = Physics2D.BoxCast(box.bounds.center, box.bounds.size * 2f, 0f, Vector2.right, 1f, obstacleLayer);
+        CircleCollider2D box = GetComponent<CircleCollider2D>();
+        RaycastHit2D ray = Physics2D.Raycast(box.bounds.center, Vector2.right, 5f, obstacleLayer);
+        if (ray)
+            ore = ray.transform.gameObject;
+        else
+            ore = null;
         return ray.collider != null;
     }
 }

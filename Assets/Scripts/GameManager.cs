@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
 
     public void AddToScore(float scoreToAdd)
     {
-        Debug.Log(scoreToAdd);
         score += scoreToAdd;
         digCount++;
         OnScoreUpdate?.Invoke(this, EventArgs.Empty);

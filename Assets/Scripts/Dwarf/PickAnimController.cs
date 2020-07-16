@@ -26,4 +26,6 @@ public class PickAnimController : MonoBehaviour
     {
         anim.SetBool("isMining", false);
     }
+
+    public bool GetAnimState() => anim.GetBool("isMining");
 }
