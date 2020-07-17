@@ -55,13 +55,8 @@ public class SwingPickaxe : MonoBehaviour
         }
         else if (IsGrounded())
         {
-            Jump();
+            GetComponent<Jump>().DoJump();
         }
-    }
-
-    private void Jump()
-    {
-        rb2d.velocity = Vector3.up * jumpForce;
     }
 
     private void Mine(GameObject objectMined)
