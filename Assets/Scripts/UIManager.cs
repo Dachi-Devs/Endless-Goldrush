@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -23,4 +24,8 @@ public class UIManager : MonoBehaviour
         scoreText.text = GameManager.instance.GetScore().ToString();
     }
 
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
 }

@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 2136859857714684318}
   - component: {fileID: 2136859857714684317}
   - component: {fileID: 2136859857714684312}
+  - component: {fileID: 9208894330854070803}
   - component: {fileID: 2136859857714684319}
   - component: {fileID: 277777854}
   m_Layer: 0
@@ -147,8 +148,20 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 512
-  jumpForce: 40
   pickaxe: {fileID: 2136859858208939983}
+--- !u!114 &9208894330854070803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136859857714684316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b5784f75d899c41ba395d1de05b40a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpForce: 40
 --- !u!50 &2136859857714684319
 Rigidbody2D:
   serializedVersion: 4

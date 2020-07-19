@@ -7,10 +7,7 @@ public class SwingPickaxe : MonoBehaviour
     private LayerMask floorLayer;
     [SerializeField]
     private LayerMask obstacleLayer;
-    [SerializeField]
-    private float jumpForce;
 
-    private Rigidbody2D rb2d;
     private bool dead;
 
     [SerializeField]
@@ -20,13 +17,8 @@ public class SwingPickaxe : MonoBehaviour
 
     void Awake()
     {
-        rb2d = GetComponent<Rigidbody2D>();
         FindObjectOfType<PickAnimController>().OnSwingEnd += AnimController_OnSwingEnd;
         GetComponent<RunForward>().OnDeath += RunForward_OnDeath;
-        if (rb2d == null)
-        {
-            rb2d = gameObject.AddComponent<Rigidbody2D>();
-        }
     }
 
     void Update()
