@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Localisation : MonoBehaviour
@@ -9,12 +10,22 @@ public class Localisation : MonoBehaviour
         German
     }
 
-    public static Language language = Language.German;
+    public static Language language;
 
     private static Dictionary<string, string> localisedENG;
     private static Dictionary<string, string> localisedGER;
 
     public static bool isInit;
+
+    private static void Start()
+    {
+        if (!PlayerPrefs.HasKey("Language"))
+        {
+            PlayerPrefs.SetString("Language", "English");
+        }
+
+        language = (Language)Enum.Parse(typeof(Language), PlayerPrefs.GetString("Language"));
+    }
 
     public static void Init()
     {
@@ -44,5 +55,10 @@ public class Localisation : MonoBehaviour
                 break;
         }
         return value;
+    }
+
+    public static void SetLanguage()
+    {
+
     }
 }

@@ -1,17 +1,24 @@
 ﻿using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PickaxeProperties : MonoBehaviour
 {
     [SerializeField]
-    private Sprite pickSprite;
+    private PickaxeSO pickaxe;
 
     void Start()
     {
-        SetPickSprite();
+        UpdatePick();
     }
 
-    private void SetPickSprite()
+    public void SetPick(PickaxeSO pickToSet)
     {
-        GetComponent<SpriteRenderer>().sprite = pickSprite;
+        pickaxe = pickToSet;
+        UpdatePick();
+    }
+
+    private void UpdatePick()
+    {
+        GetComponent<SpriteRenderer>().sprite = pickaxe.sprite;
     }
 }

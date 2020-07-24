@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PickaxeSelection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private PickaxeSO currentSelection;
 
-    // Update is called once per frame
-    void Update()
+    public void SetSelection(PickaxeSO pickaxe)
     {
-        
+        currentSelection = pickaxe;
+        FindObjectOfType<PickaxeProperties>().SetPick(currentSelection);
     }
 }

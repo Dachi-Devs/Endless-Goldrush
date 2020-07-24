@@ -9,7 +9,8 @@ public class MenuManager : MonoBehaviour
     {
         main,
         shop,
-        records
+        records,
+        settings
     }
 
     private MenuState state;
@@ -52,6 +53,9 @@ public class MenuManager : MonoBehaviour
                 break;
             case MenuState.records:
                 SwitchToMenuType(menus[2]);
+                break;
+            case MenuState.settings:
+                SwitchToMenuType(menus[3]);
                 break;
         }
     }
