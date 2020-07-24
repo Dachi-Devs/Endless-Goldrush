@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-public class CSVLoader : MonoBehaviour
+public class CSVLoader
 {
     private TextAsset csvFile;
     private char lineSeparator = '\n';
