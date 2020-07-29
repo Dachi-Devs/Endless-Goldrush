@@ -17,16 +17,6 @@ public class Localisation : MonoBehaviour
 
     public static bool isInit;
 
-    private static void Start()
-    {
-        if (!PlayerPrefs.HasKey("Language"))
-        {
-            PlayerPrefs.SetString("Language", "English");
-        }
-
-        language = (Language)Enum.Parse(typeof(Language), PlayerPrefs.GetString("Language"));
-    }
-
     public static void Init()
     {
         CSVLoader csvLoader = new CSVLoader();
@@ -35,6 +25,13 @@ public class Localisation : MonoBehaviour
 
         localisedENG = csvLoader.GetDictionaryValues("eng");
         localisedGER = csvLoader.GetDictionaryValues("ger");
+
+        if (!PlayerPrefs.HasKey("Language"))
+        {
+            PlayerPrefs.SetString("Language", "English");
+        }
+
+        language = (Language)Enum.Parse(typeof(Language), PlayerPrefs.GetString("Language"));
 
         isInit = true;
     }

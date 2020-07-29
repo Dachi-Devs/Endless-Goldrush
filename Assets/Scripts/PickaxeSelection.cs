@@ -1,13 +1,14 @@
-﻿using UnityEngine;
-
+﻿using System;
+using UnityEngine;
 public class PickaxeSelection : MonoBehaviour
 {
-    [SerializeField]
-    private PickaxeSO currentSelection;
+    public PickSelectSO pickSelect;
+
+    public event EventHandler OnPickSelect;
 
     public void SetSelection(PickaxeSO pickaxe)
     {
-        currentSelection = pickaxe;
-        FindObjectOfType<PickaxeProperties>().SetPick(currentSelection);
+        pickSelect.currentPickaxe = pickaxe;
+        OnPickSelect?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -22,7 +22,7 @@ public class OreProperties : MonoBehaviour, IMinableObject
 
     public void OnMine()
     {
-        GameManager.instance.AddToScore(ore.value);
+        GameManager.instance.AddToScore((int)ore.value);
         Destroy(gameObject);
     }
 }

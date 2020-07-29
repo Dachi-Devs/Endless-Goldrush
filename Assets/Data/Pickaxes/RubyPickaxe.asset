@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 4247b33f531ab794ba64e90f5da1b875, type: 3}
   pickNameKey: RUBY_PICK
-  pickDescKey: 
+  pickDescKey: RUBY_DESC

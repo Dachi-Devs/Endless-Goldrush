@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5fba024bdd014469678d96c28fa2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickaxe: {fileID: 11400000, guid: 5c578c0c3b407954ba6d7d1e32557b5d, type: 2}
+  pickaxe: {fileID: 11400000, guid: e580de32f87a2a34d897905ffa5ce092, type: 2}
 --- !u!114 &1260903845712764030
 MonoBehaviour:
   m_ObjectHideFlags: 0

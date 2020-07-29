@@ -15,6 +15,11 @@ public class TextLocaliser : MonoBehaviour
             lang.OnLanguageUpdate += LanguageSetting_OnLanguageUpdate;
     }
 
+    private void OnEnable()
+    {
+        LocaliseText();
+    }
+
     private void LanguageSetting_OnLanguageUpdate(object sender, EventArgs e)
     {
         LocaliseText();
@@ -24,7 +29,10 @@ public class TextLocaliser : MonoBehaviour
     {
         textField = GetComponent<Text>();
         string value = Localisation.GetLocalisedValue(key);
-        value = value.TrimStart(' ', '"'); value = value.Replace("\"", "");
-        textField.text = value;
+        if (value != null)
+        {
+            value = value.TrimStart(' ', '"'); value = value.Replace("\"", "");
+            textField.text = value;
+        }
     }
 }

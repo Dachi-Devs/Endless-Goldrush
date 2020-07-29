@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: SapphirePick
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 4247b33f531ab794ba64e90f5da1b875, type: 3}
-  pickNameKey: SapphirePick
-  pickDescKey: 
+  pickNameKey: SAPPHIRE_PICK
+  pickDescKey: SAPPHIRE_DESC

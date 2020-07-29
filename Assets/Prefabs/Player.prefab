@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5fba024bdd014469678d96c28fa2bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickSprite: {fileID: 21300000, guid: 675b7ab4d798b4a42af3472c92df7cca, type: 3}
+  pickaxe: {fileID: 11400000, guid: e580de32f87a2a34d897905ffa5ce092, type: 2}
 --- !u!114 &1497860939
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 1744100cad5a74d44ace7f40284bcd4c, type: 3}
   pickNameKey: CANDY_PICK
-  pickDescKey: 
+  pickDescKey: CANDY_DESC

@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    private float score;
-    private int digCount = 0;
+    private int score;
 
     public event EventHandler OnScoreUpdate;
 
@@ -23,16 +22,23 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<RunForward>().OnDeath += RunForward_OnDeath;
+
+        if (!PlayerPrefs.HasKey("TotalScore"))
+            PlayerPrefs.SetInt("TotalScore", 0);
+        if (!PlayerPrefs.HasKey("HighScore"))
+            PlayerPrefs.SetInt("HighScore", 0);
+        if (!PlayerPrefs.HasKey("TotalMined"))
+            PlayerPrefs.SetInt("TotalMined", 0);
     }
 
-    public void AddToScore(float scoreToAdd)
+    public void AddToScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        digCount++;
+        PlayerPrefs.SetInt("TotalMined", PlayerPrefs.GetInt("TotalMined") + 1);
         OnScoreUpdate?.Invoke(this, EventArgs.Empty);
     }
 
-    public float GetScore() => score;
+    public int GetScore() => score;
 
     private void RunForward_OnDeath(object sender, EventArgs e)
     {
@@ -41,6 +47,9 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator OnDeath()
     {
+        if (score > PlayerPrefs.GetInt("HighScore"))
+            PlayerPrefs.SetInt("HighScore", score);
+        PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + score);
         yield return new WaitForSeconds(2f);
         ActivateDeathMenu();
     }

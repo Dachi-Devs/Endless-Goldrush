@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: fa3e535d970d72d4dab6ff3667f9c232, type: 3}
   pickNameKey: EMERALD_PICK
-  pickDescKey: 
+  pickDescKey: EMERALD_DESC
