@@ -8,16 +8,15 @@ public class LoadRecords : MonoBehaviour
     [SerializeField]
     private GameObject recordPrefab;
 
-    private void Start()
-    {
-        for (int i = 0; i < statKeys.Length; i++)
-        {
-            CreateRecordList();
-        }
-    }
-
     private void OnEnable()
     {
+        if (GetComponentsInChildren<LoadRecord>().Length < 1)
+        {
+            for (int i = 0; i < statKeys.Length; i++)
+            {
+                CreateRecordList();
+            }
+        }
         UpdateStats();
     }
 

@@ -10,6 +10,6 @@ public class Barrel : MonoBehaviour, IMinableObject
 
     private void AnimationEnd()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

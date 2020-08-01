@@ -10,6 +10,9 @@ public class RunForward : MonoBehaviour
 
     private bool run = true;
 
+    [SerializeField]
+    private bool godMode = false;
+
     public event EventHandler OnDeath;
 
     void Awake()
@@ -31,8 +34,11 @@ public class RunForward : MonoBehaviour
     {
         if (collision.gameObject.layer == 9)
         {
-            run = false;
-            OnDeath?.Invoke(this, EventArgs.Empty);
+            if (!godMode)
+            {
+                run = false;
+                OnDeath?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 

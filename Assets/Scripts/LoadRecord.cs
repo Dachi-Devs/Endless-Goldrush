@@ -11,7 +11,7 @@ public class LoadRecord : MonoBehaviour
 
     public void LoadStat(string statToLoad)
     {
-        statName.key = statToLoad + "_TEXT";
+        statName.key = (statToLoad + "_TEXT").ToUpper(); ;
         statNumber.text = PlayerPrefs.GetInt(statToLoad).ToString();
     }
 }
