@@ -30,14 +30,19 @@ public class RunForward : MonoBehaviour
             rb2d.velocity = new Vector2(1f * moveSpeed, rb2d.velocity.y);
     }
 
+    public void KillPlayer()
+    {
+        run = false;
+        OnDeath?.Invoke(this, EventArgs.Empty);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 9)
         {
             if (!godMode)
             {
-                run = false;
-                OnDeath?.Invoke(this, EventArgs.Empty);
+                KillPlayer();
             }
         }
     }

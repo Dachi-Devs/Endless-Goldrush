@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("HighScore", 0);
         if (!PlayerPrefs.HasKey("TotalMined"))
             PlayerPrefs.SetInt("TotalMined", 0);
+        if (!PlayerPrefs.HasKey("CurrentGold"))
+            PlayerPrefs.SetInt("CurrentGold", 0);
     }
 
     public void AddToScore(int scoreToAdd)
@@ -48,5 +50,6 @@ public class GameManager : MonoBehaviour
         if (score > PlayerPrefs.GetInt("HighScore"))
             PlayerPrefs.SetInt("HighScore", score);
         PlayerPrefs.SetInt("TotalScore", PlayerPrefs.GetInt("TotalScore") + score);
+        PlayerPrefs.SetInt("CurrentGold", PlayerPrefs.GetInt("CurrentGold") + (score / 100));
     }
 }
