@@ -7,6 +7,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField]
     private GameObject buyButton;
 
+    [SerializeField]
+    private GameObject descText;
+
     public void UnlockPickaxe()
     {
         currentSelection.UnlockPick();
@@ -16,8 +19,15 @@ public class ShopManager : MonoBehaviour
     {
         currentSelection = selection;
         if (currentSelection == null)
+        {
+            descText.SetActive(true);            
             buyButton.SetActive(false);
+        }
+
         else
+        {
+            descText.SetActive(false);
             buyButton.SetActive(true);
+        }
     }
 }

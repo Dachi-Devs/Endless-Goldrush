@@ -12,23 +12,16 @@ public class ShopDescription : MonoBehaviour
     [SerializeField]
     private PickSelectSO pickSelect;
 
-
-    void Start()
+    private void OnEnable()
     {
-        FindObjectOfType<PickaxeSelection>().OnPickSelect += PickaxeSelection_OnPickSelect;
-        SetDescKeys();
+        SetDescKeys(pickSelect.currentPickaxe.pickNameKey, pickSelect.currentPickaxe.pickDescKey);
     }
 
-    private void PickaxeSelection_OnPickSelect(object sender, EventArgs e)
+    public void SetDescKeys(string key, string desc)
     {
-        SetDescKeys();
-    }
-
-    private void SetDescKeys()
-    {
-        pickaxeName.key = FindObjectOfType<PickaxeSelection>().pickSelect.currentPickaxe.pickNameKey;
+        pickaxeName.key = key;
         pickaxeName.LocaliseText();
-        pickaxeDesc.key = FindObjectOfType<PickaxeSelection>().pickSelect.currentPickaxe.pickDescKey;
+        pickaxeDesc.key = desc;
         pickaxeDesc.LocaliseText();
     }
 }

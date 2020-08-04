@@ -15,7 +15,7 @@ public class PickaxeSelection : MonoBehaviour
     public void SetSelection(PickaxeSO pickaxe)
     {
         pickSelect.currentPickaxe = pickaxe;
-        OnPickSelect?.Invoke(this, EventArgs.Empty);
         PlayerPrefs.SetString("StartPick", pickaxe.name);
+        OnPickSelect?.Invoke(this, EventArgs.Empty);
     }
 }

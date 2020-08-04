@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12380789188117478403f9d5f98d762, type: 3}
-  m_Name: RubyPickaxe
+  m_Name: MiniMe
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: ce6a103b580744243a36a439d88201e2, type: 3}
-  pickNameKey: RUBY_PICK
-  pickDescKey: RUBY_DESC
+  sprite: {fileID: 21300000, guid: 4247b33f531ab794ba64e90f5da1b875, type: 3}
+  pickNameKey: MINI_PICK
+  pickDescKey: MINI_DESC

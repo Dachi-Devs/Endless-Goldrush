@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -905,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &157314673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,9 +949,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1295976172}
-        m_MethodName: SwitchToMenu
-        m_Mode: 5
+      - m_Target: {fileID: 1906763633}
+        m_MethodName: UnlockPickaxe
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1204,7 +1204,7 @@ RectTransform:
   m_AnchorMin: {x: 0.7, y: 0.15}
   m_AnchorMax: {x: 0.9, y: 0.85}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 1.4999976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &174653183
 MonoBehaviour:
@@ -1267,7 +1267,7 @@ PrefabInstance:
     - target: {fileID: 3715741707019970414, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
       propertyPath: m_Name
-      value: ChickenFrame
+      value: AmethystFrame
       objectReference: {fileID: 0}
     - target: {fileID: 4046614180987432836, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -1438,7 +1438,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickaxeSelection
       value: 
-      objectReference: {fileID: 11400000, guid: 3bf498f135b87d546b8be9f5b6832f76,
+      objectReference: {fileID: 11400000, guid: e760b3c0bb8b5354287bbaddbdc53138,
         type: 2}
     - target: {fileID: 7432490573530881467, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -1529,7 +1529,7 @@ PrefabInstance:
     - target: {fileID: 3715741707019970414, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
       propertyPath: m_Name
-      value: PickFrame (15)
+      value: BananaFrame
       objectReference: {fileID: 0}
     - target: {fileID: 4046614180987432836, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -1701,6 +1701,12 @@ PrefabInstance:
       propertyPath: isLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7432490573530881467, guid: b7238b6f5d090dc4bbdf564855c31b80,
+        type: 3}
+      propertyPath: pickaxeSelection
+      value: 
+      objectReference: {fileID: 11400000, guid: 42a4f2a28fe9b1e4ab25548cb0833aff,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7238b6f5d090dc4bbdf564855c31b80, type: 3}
 --- !u!224 &323578957 stripped
@@ -2080,7 +2086,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickaxeName: {fileID: 1409268148}
   pickaxeDesc: {fileID: 1409812493}
-  pickSelect: {fileID: 0}
+  pickSelect: {fileID: 11400000, guid: e580de32f87a2a34d897905ffa5ce092, type: 2}
 --- !u!1001 &618355533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3117,7 +3123,7 @@ PrefabInstance:
     - target: {fileID: 3715741707019970414, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
       propertyPath: m_Name
-      value: PickFrame (6)
+      value: MiniMeFrame
       objectReference: {fileID: 0}
     - target: {fileID: 4046614180987432836, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -3289,6 +3295,12 @@ PrefabInstance:
       propertyPath: isLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7432490573530881467, guid: b7238b6f5d090dc4bbdf564855c31b80,
+        type: 3}
+      propertyPath: pickaxeSelection
+      value: 
+      objectReference: {fileID: 11400000, guid: d902b617879a1f84f92712ccff996799,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7238b6f5d090dc4bbdf564855c31b80, type: 3}
 --- !u!224 &952482205 stripped
@@ -4402,7 +4414,7 @@ MonoBehaviour:
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 4
+    m_MinSize: 40
     m_MaxSize: 70
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -5761,7 +5773,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pickaxeSelection
       value: 
-      objectReference: {fileID: 11400000, guid: f485e3080e6323245b6891e65b0b7319,
+      objectReference: {fileID: 11400000, guid: d902b617879a1f84f92712ccff996799,
         type: 2}
     - target: {fileID: 7432490573530881467, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -5786,7 +5798,7 @@ PrefabInstance:
     - target: {fileID: 3715741707019970414, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
       propertyPath: m_Name
-      value: PickFrame (11)
+      value: ChickenFrame
       objectReference: {fileID: 0}
     - target: {fileID: 4046614180987432836, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -5958,6 +5970,12 @@ PrefabInstance:
       propertyPath: isLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7432490573530881467, guid: b7238b6f5d090dc4bbdf564855c31b80,
+        type: 3}
+      propertyPath: pickaxeSelection
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bf498f135b87d546b8be9f5b6832f76,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7238b6f5d090dc4bbdf564855c31b80, type: 3}
 --- !u!224 &1853202625 stripped
@@ -5976,7 +5994,7 @@ PrefabInstance:
     - target: {fileID: 3715741707019970414, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
       propertyPath: m_Name
-      value: PickFrame (7)
+      value: AmethystFrame
       objectReference: {fileID: 0}
     - target: {fileID: 4046614180987432836, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -6219,6 +6237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyButton: {fileID: 157314672}
+  descText: {fileID: 1409812489}
 --- !u!1001 &1912452463
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6556,7 +6575,7 @@ PrefabInstance:
     - target: {fileID: 3715741707019970414, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
       propertyPath: m_Name
-      value: PickFrame (3)
+      value: Lollipop
       objectReference: {fileID: 0}
     - target: {fileID: 4046614180987432836, guid: b7238b6f5d090dc4bbdf564855c31b80,
         type: 3}
@@ -6728,6 +6747,12 @@ PrefabInstance:
       propertyPath: isLocked
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7432490573530881467, guid: b7238b6f5d090dc4bbdf564855c31b80,
+        type: 3}
+      propertyPath: pickaxeSelection
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c434cf8850514843a41af967394d37e,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7238b6f5d090dc4bbdf564855c31b80, type: 3}
 --- !u!224 &2033045827 stripped

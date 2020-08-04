@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e12380789188117478403f9d5f98d762, type: 3}
   m_Name: TopazPickaxe
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 4247b33f531ab794ba64e90f5da1b875, type: 3}
+  sprite: {fileID: 21300000, guid: d0a698e1f12b6ae49b5fbd398040ff9d, type: 3}
   pickNameKey: TOPAZ_PICK
   pickDescKey: TOPAZ_DESC
