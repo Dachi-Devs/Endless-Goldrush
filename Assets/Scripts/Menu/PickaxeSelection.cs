@@ -8,6 +8,8 @@ public class PickaxeSelection : MonoBehaviour
 
     private void Start()
     {
+        if (PlayerPrefs.GetString("StartPick") == null || PlayerPrefs.GetInt(PlayerPrefs.GetString("StartPick")) == 0)
+            PlayerPrefs.SetString("StartPick", "CopperPickaxe");
         PickaxeSO startPick = Resources.Load<PickaxeSO>("Data/Pickaxes/" + PlayerPrefs.GetString("StartPick"));
         SetSelection(startPick);
     }
@@ -18,4 +20,6 @@ public class PickaxeSelection : MonoBehaviour
         PlayerPrefs.SetString("StartPick", pickaxe.name);
         OnPickSelect?.Invoke(this, EventArgs.Empty);
     }
+
+    public PickaxeSO GetSelection() => pickSelect.currentPickaxe;
 }

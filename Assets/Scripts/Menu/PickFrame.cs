@@ -1,5 +1,4 @@
-﻿using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PickFrame : MonoBehaviour
@@ -8,20 +7,17 @@ public class PickFrame : MonoBehaviour
     private PickaxeSO pickaxeSelection;
 
     [SerializeField]
-    protected bool isLocked;
+    private bool isLocked;
+
+    [SerializeField]
+    private int cost;
+
+    [SerializeField]
+    private GameObject lockImage;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (isLocked)
-        {
-            GetComponentsInChildren<Image>()[2].gameObject.SetActive(true);
-        }
-        else
-        {
-            GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
-        }
-
         Image childImage = GetComponentsInChildren<Image>()[1];
         if (pickaxeSelection != null)
             childImage.sprite = pickaxeSelection.sprite;
@@ -35,7 +31,7 @@ public class PickFrame : MonoBehaviour
     public void UnlockPick()
     {
         isLocked = false;
-        GetComponentsInChildren<Image>()[2].gameObject.SetActive(false);
+        lockImage.SetActive(false);
         FindObjectOfType<PickaxeSelection>().SetSelection(pickaxeSelection);
         FindObjectOfType<ShopManager>().SetShopSelection(null);
     }
@@ -57,4 +53,10 @@ public class PickFrame : MonoBehaviour
             FindObjectOfType<ShopManager>().SetShopSelection(this);
         }
     }
+
+    public int GetCost() => cost;
+
+    public bool GetIsLocked() => isLocked;
+
+    public string GetName() => pickaxeSelection.name;
 }

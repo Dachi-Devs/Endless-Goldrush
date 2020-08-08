@@ -129,6 +129,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickaxeSelection: {fileID: 0}
+  pickName: 
+  isLocked: 0
+  cost: 0
+  lockImage: {fileID: 4253683912475599732}
 --- !u!222 &1043555337735524026
 CanvasRenderer:
   m_ObjectHideFlags: 0
