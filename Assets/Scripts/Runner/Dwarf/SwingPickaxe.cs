@@ -25,7 +25,7 @@ public class SwingPickaxe : MonoBehaviour
     {
         if (!dead)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
             {
                 PickAnimController pick = GetComponentInChildren<PickAnimController>();
                 if (!pick.GetAnimState())

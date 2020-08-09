@@ -72,11 +72,11 @@ public class LevelSpawner : MonoBehaviour
     {
         ClearChunk(chunk);
 
-        for (int x = 0; x < 8; x++)
+        for (int x = 0; x < 6; x++)
         {
             for (int y = 0; y < 2; y++)
             {
-                float xValue = -21f + (x * 6f);
+                float xValue = -21f + (x * 8.4f);
                 float yValue = 0.5f + (y * 7f);
                 float xRot = y * 180f;
                 int spawn = Random.Range(0, 100);

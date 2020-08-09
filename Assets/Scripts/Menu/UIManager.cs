@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Text finalScore;
 
+    [SerializeField]
+    private Text finalGold;
+
     void OnEnable()
     {        
         GameManager.instance.OnScoreUpdate += GameManager_OnScoreUpdate;
@@ -41,6 +44,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         gameOverPanel.SetActive(true);
         finalScore.text = GameManager.instance.GetScore().ToString();
+        finalGold.text = (GameManager.instance.GetScore() / 100).ToString();
     }
 
     private void GameManager_OnScoreUpdate(object sender, EventArgs e)
