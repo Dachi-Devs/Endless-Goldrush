@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PickAnimController : MonoBehaviour
 {
-    protected Animator anim;
+    public Animator anim;
 
     public event EventHandler OnSwingEnd;
     // Start is called before the first frame update
@@ -14,7 +14,7 @@ public class PickAnimController : MonoBehaviour
 
     public void StartSwing()
     {
-        anim.SetBool("isMining", true);
+        anim.SetTrigger("Mine");
     }
 
     public void SwingHit()
@@ -24,8 +24,13 @@ public class PickAnimController : MonoBehaviour
 
     public void EndSwing()
     {
-        anim.SetBool("isMining", false);
+        anim.SetBool("Mine", false);
     }
 
-    public bool GetAnimState() => anim.GetBool("isMining");
+    public void StartIdle()
+    {
+        anim.SetBool("Mine", false);
+    }
+
+    public bool MineBool() => anim.GetBool("Mine");
 }

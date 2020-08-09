@@ -12,6 +12,8 @@ public class SwingPickaxe : MonoBehaviour
 
     [SerializeField]
     private GameObject pickaxe;
+
+    private PickAnimController pick;
     
 
 
@@ -19,17 +21,19 @@ public class SwingPickaxe : MonoBehaviour
     {
         FindObjectOfType<PickAnimController>().OnSwingEnd += AnimController_OnSwingEnd;
         GetComponent<RunForward>().OnDeath += RunForward_OnDeath;
+        pick = GetComponentInChildren<PickAnimController>();
     }
 
     void Update()
     {
         if (!dead)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0 || Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
             {
-                PickAnimController pick = GetComponentInChildren<PickAnimController>();
-                if (!pick.GetAnimState())
+                if (!pick.anim.GetCurrentAnimatorStateInfo(0).IsName("Swinging"))
+                {
                     pick.StartSwing();
+                }
             }
         }
 
@@ -39,7 +43,7 @@ public class SwingPickaxe : MonoBehaviour
         dead = true;
     }
 
-    private void AnimController_OnSwingEnd(object sender, System.EventArgs e)
+    private void AnimController_OnSwingEnd(object sender, EventArgs e)
     {
         if (IsMining(out GameObject ore))
         {
